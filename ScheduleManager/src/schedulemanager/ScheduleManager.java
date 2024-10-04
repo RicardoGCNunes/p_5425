@@ -8,6 +8,7 @@ import employeeform.FEmpInit;
 import turnsform.FTurnsInit;
 import missform.FMissInit;
 import holidayform.FHolidayInit;
+import extraform.FExtraInit;
 
 /**
  *
@@ -25,8 +26,10 @@ public class ScheduleManager {
         //fti.setVisible(true);
         //FMissInit fme = new FMissInit("Ricardo Nunes", "1234");
         //fme.setVisible(true);
-        FHolidayInit fhe = new FHolidayInit("Ricardo Nunes", "1234");
-        fhe.setVisible(true);
+        //FHolidayInit fhe = new FHolidayInit("Ricardo Nunes", "1234");
+        //fhe.setVisible(true);
+        FExtraInit fee = new FExtraInit("Ricardo Nunes", "1234");
+        fee.setVisible(true);
     }
     
 }

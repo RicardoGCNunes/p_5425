@@ -36,7 +36,7 @@ public class FEmpEdit extends javax.swing.JFrame {
         inputTel = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         inputStartDate = new javax.swing.JTextField();
-        btnInsert = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
         btnReturn = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         inputName = new javax.swing.JTextField();
@@ -46,7 +46,7 @@ public class FEmpEdit extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setText("Inserir Funcionário");
+        jLabel1.setText("Editar Funcionário");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
 
         jLabel8.setText("Departamento:");
@@ -68,8 +68,8 @@ public class FEmpEdit extends javax.swing.JFrame {
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, -1));
         getContentPane().add(inputStartDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 380, 270, -1));
 
-        btnInsert.setText("Editar");
-        getContentPane().add(btnInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 460, -1, -1));
+        btnEdit.setText("Editar");
+        getContentPane().add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 460, -1, -1));
 
         btnReturn.setText("Voltar");
         btnReturn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -131,7 +131,7 @@ public class FEmpEdit extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnInsert;
+    private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnReturn;
     private javax.swing.JTextField inputEmail;
     private javax.swing.JTextField inputName;

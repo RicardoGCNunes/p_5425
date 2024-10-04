@@ -46,7 +46,7 @@ public class FTurnsEdit extends javax.swing.JFrame {
         labelDay = new javax.swing.JLabel();
         weekDayInput = new javax.swing.JTextField();
         btnReturn = new javax.swing.JButton();
-        btnInsert = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         listBoxTurns = new javax.swing.JComboBox<>();
 
@@ -95,8 +95,8 @@ public class FTurnsEdit extends javax.swing.JFrame {
         });
         getContentPane().add(btnReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 380, -1, -1));
 
-        btnInsert.setText("Inserir");
-        getContentPane().add(btnInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, -1, -1));
+        btnEdit.setText("Editar");
+        getContentPane().add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, -1, -1));
 
         jLabel2.setText("Turno:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
@@ -165,7 +165,7 @@ public class FTurnsEdit extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnInsert;
+    private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnReturn;
     private javax.swing.JCheckBox checkRepeat;
     private javax.swing.JTextField inputDate;

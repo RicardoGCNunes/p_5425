@@ -41,7 +41,7 @@ public class FMissEdit extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         checkBoxJust = new javax.swing.JCheckBox();
-        btnInsert = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
         btnReturn = new javax.swing.JButton();
         listBoxMisses = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
@@ -50,7 +50,7 @@ public class FMissEdit extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setText("Inserir Faltas");
+        jLabel1.setText("Editar Faltas");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, -1, -1));
 
         jLabel2.setText("Data:");
@@ -64,8 +64,8 @@ public class FMissEdit extends javax.swing.JFrame {
         checkBoxJust.setText("Justificada?");
         getContentPane().add(checkBoxJust, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, -1, -1));
 
-        btnInsert.setText("Inserir");
-        getContentPane().add(btnInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, -1, -1));
+        btnEdit.setText("Editar");
+        getContentPane().add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, -1, -1));
 
         btnReturn.setText("Voltar");
         btnReturn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -125,7 +125,7 @@ public class FMissEdit extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnInsert;
+    private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnReturn;
     private javax.swing.JCheckBox checkBoxJust;
     private javax.swing.JTextField inputDate;

@@ -35,7 +35,7 @@ public class FHolidayEdit extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnInsert = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
         btnReturn5 = new javax.swing.JButton();
         inputEndDate = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -48,8 +48,8 @@ public class FHolidayEdit extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnInsert.setText("Inserir");
-        getContentPane().add(btnInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, -1, -1));
+        btnEdit.setText("Editar");
+        getContentPane().add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, -1, -1));
 
         btnReturn5.setText("Voltar");
         btnReturn5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -68,7 +68,7 @@ public class FHolidayEdit extends javax.swing.JFrame {
         getContentPane().add(inputStartDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 200, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setText("Inserir Férias");
+        jLabel1.setText("Editar Férias");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, -1, -1));
 
         jLabel4.setText("Data Inicio:");
@@ -120,7 +120,7 @@ public class FHolidayEdit extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnInsert;
+    private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnReturn5;
     private javax.swing.JTextField inputEndDate;
     private javax.swing.JTextField inputStartDate;
