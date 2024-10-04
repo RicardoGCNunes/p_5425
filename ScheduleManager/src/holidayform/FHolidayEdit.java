@@ -9,7 +9,10 @@ package holidayform;
  * @author ART
  */
 public class FHolidayEdit extends javax.swing.JFrame {
-
+    
+    private String name;
+    private String id;
+    
     /**
      * Creates new form FHolidayEdit
      */
@@ -17,6 +20,12 @@ public class FHolidayEdit extends javax.swing.JFrame {
         initComponents();
     }
 
+    public FHolidayEdit(String name, String id) {
+        this.name = name;
+        this.id = id;
+        initComponents();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,21 +35,54 @@ public class FHolidayEdit extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        btnInsert = new javax.swing.JButton();
+        btnReturn5 = new javax.swing.JButton();
+        inputEndDate = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        inputStartDate = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        listBoxHolidays = new javax.swing.JComboBox<>();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnInsert.setText("Inserir");
+        getContentPane().add(btnInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, -1, -1));
+
+        btnReturn5.setText("Voltar");
+        btnReturn5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnReturn5MouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnReturn5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, -1, -1));
+        getContentPane().add(inputEndDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 200, -1));
+
+        jLabel2.setText("Data Fim:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, -1, -1));
+
+        jLabel3.setText("Férias:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, -1, -1));
+        getContentPane().add(inputStartDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 200, -1));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel1.setText("Inserir Férias");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, -1, -1));
+
+        jLabel4.setText("Data Inicio:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, -1, -1));
+        getContentPane().add(listBoxHolidays, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 200, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnReturn5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReturn5MouseClicked
+        FHolidayInit fmi = new FHolidayInit();
+        fmi.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnReturn5MouseClicked
 
     /**
      * @param args the command line arguments
@@ -78,5 +120,14 @@ public class FHolidayEdit extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnInsert;
+    private javax.swing.JButton btnReturn5;
+    private javax.swing.JTextField inputEndDate;
+    private javax.swing.JTextField inputStartDate;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JComboBox<String> listBoxHolidays;
     // End of variables declaration//GEN-END:variables
 }

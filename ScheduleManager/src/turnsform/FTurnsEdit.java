@@ -9,7 +9,10 @@ package turnsform;
  * @author ART
  */
 public class FTurnsEdit extends javax.swing.JFrame {
-
+    
+    private String name;
+    private String id;
+    
     /**
      * Creates new form FTurnsEdit
      */
@@ -17,6 +20,12 @@ public class FTurnsEdit extends javax.swing.JFrame {
         initComponents();
     }
 
+    public FTurnsEdit(String name, String id) {
+        this.name = name;
+        this.id = id;
+        initComponents();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,21 +35,99 @@ public class FTurnsEdit extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel1 = new javax.swing.JLabel();
+        labelDate = new javax.swing.JLabel();
+        inputDate = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        inputStartTime = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        inputEndTime = new javax.swing.JTextField();
+        checkRepeat = new javax.swing.JCheckBox();
+        labelDay = new javax.swing.JLabel();
+        weekDayInput = new javax.swing.JTextField();
+        btnReturn = new javax.swing.JButton();
+        btnInsert = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        listBoxTurns = new javax.swing.JComboBox<>();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel1.setText("Editar Turnos");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, -1, -1));
+
+        labelDate.setText("Data:");
+        getContentPane().add(labelDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
+
+        inputDate.setToolTipText("");
+        getContentPane().add(inputDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 270, -1));
+
+        jLabel3.setText("Hora Inicio:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
+        getContentPane().add(inputStartTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 270, -1));
+
+        jLabel4.setText("Hora Fim:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, -1, -1));
+        getContentPane().add(inputEndTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 270, -1));
+
+        checkRepeat.setText("Turno Repetido");
+        checkRepeat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                checkRepeatMouseClicked(evt);
+            }
+        });
+        getContentPane().add(checkRepeat, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, -1, -1));
+
+        labelDay.setText("Dia da semana:");
+        labelDay.setEnabled(false);
+        getContentPane().add(labelDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 320, -1, -1));
+
+        weekDayInput.setToolTipText("");
+        weekDayInput.setEnabled(false);
+        getContentPane().add(weekDayInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 320, 70, -1));
+
+        btnReturn.setText("Voltar");
+        btnReturn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnReturnMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 380, -1, -1));
+
+        btnInsert.setText("Inserir");
+        getContentPane().add(btnInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, -1, -1));
+
+        jLabel2.setText("Turno:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
+        getContentPane().add(listBoxTurns, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 270, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void checkRepeatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkRepeatMouseClicked
+        if (checkRepeat.isSelected()) {
+            labelDay.setEnabled(true);
+            weekDayInput.setEnabled(true);
+            labelDate.setEnabled(false);
+            inputDate.setEnabled(false);
+            inputDate.setText("");
+        }
+        else {
+            labelDay.setEnabled(false);
+            weekDayInput.setEnabled(false);
+            weekDayInput.setText("");
+            labelDate.setEnabled(true);
+            inputDate.setEnabled(true);
+        }
+
+    }//GEN-LAST:event_checkRepeatMouseClicked
+
+    private void btnReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReturnMouseClicked
+        FTurnsInit fpr = new FTurnsInit();
+        fpr.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnReturnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -78,5 +165,19 @@ public class FTurnsEdit extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnInsert;
+    private javax.swing.JButton btnReturn;
+    private javax.swing.JCheckBox checkRepeat;
+    private javax.swing.JTextField inputDate;
+    private javax.swing.JTextField inputEndTime;
+    private javax.swing.JTextField inputStartTime;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel labelDate;
+    private javax.swing.JLabel labelDay;
+    private javax.swing.JComboBox<String> listBoxTurns;
+    private javax.swing.JTextField weekDayInput;
     // End of variables declaration//GEN-END:variables
 }

@@ -9,11 +9,20 @@ package turnsform;
  * @author ART
  */
 public class FTurnsList extends javax.swing.JFrame {
-
+    
+    private String name;
+    private String id;
+    
     /**
      * Creates new form FTurnsList
      */
     public FTurnsList() {
+        initComponents();
+    }
+    
+    public FTurnsList(String name, String id) {
+        this.name = name;
+        this.id = id;
         initComponents();
     }
 
@@ -27,7 +36,7 @@ public class FTurnsList extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButtonVoltar = new javax.swing.JButton();
+        btnReturn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
 
@@ -35,11 +44,16 @@ public class FTurnsList extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setText("Listar Livros");
+        jLabel1.setText("Listar Turnos");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
 
-        jButtonVoltar.setText("Voltar");
-        getContentPane().add(jButtonVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 500, -1, -1));
+        btnReturn.setText("Voltar");
+        btnReturn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnReturnMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 500, -1, -1));
 
         jScrollPane1.setViewportView(jTable);
 
@@ -47,6 +61,12 @@ public class FTurnsList extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReturnMouseClicked
+        FTurnsInit fti = new FTurnsInit();
+        fti.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnReturnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -84,7 +104,7 @@ public class FTurnsList extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonVoltar;
+    private javax.swing.JButton btnReturn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable;

@@ -38,10 +38,10 @@ public class FTurnsInit extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButtonInserir = new javax.swing.JButton();
-        jButtonEliminar = new javax.swing.JButton();
-        jButtonEditar = new javax.swing.JButton();
-        jButtonListar = new javax.swing.JButton();
+        btnInsert = new javax.swing.JButton();
+        btnEliminate = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
+        btnList = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         labelID = new javax.swing.JLabel();
@@ -54,17 +54,37 @@ public class FTurnsInit extends javax.swing.JFrame {
         jLabel1.setText("Gestão dos Turnos");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
 
-        jButtonInserir.setText("Inserir Turno");
-        getContentPane().add(jButtonInserir, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 120, -1));
+        btnInsert.setText("Inserir Turno");
+        btnInsert.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnInsertMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 120, -1));
 
-        jButtonEliminar.setText("Eliminar Turno");
-        getContentPane().add(jButtonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 120, -1));
+        btnEliminate.setText("Eliminar Turno");
+        btnEliminate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminateMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnEliminate, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 120, -1));
 
-        jButtonEditar.setText("Editar Turno");
-        getContentPane().add(jButtonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 120, -1));
+        btnEdit.setText("Editar Turno");
+        btnEdit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEditMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 120, -1));
 
-        jButtonListar.setText("Listar Turno");
-        getContentPane().add(jButtonListar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 120, -1));
+        btnList.setText("Listar Turno");
+        btnList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnListMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnList, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 120, -1));
 
         jLabel2.setText("Funcionário:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, -1, -1));
@@ -81,13 +101,37 @@ public class FTurnsInit extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnListMouseClicked
+        FTurnsList ftl = new FTurnsList(name, id);
+        ftl.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnListMouseClicked
+
+    private void btnInsertMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsertMouseClicked
+        FTurnsInsert fti = new FTurnsInsert(name, id);
+        fti.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnInsertMouseClicked
+
+    private void btnEliminateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminateMouseClicked
+        FTurnsEliminate fte = new FTurnsEliminate(name, id);
+        fte.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnEliminateMouseClicked
+
+    private void btnEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditMouseClicked
+        FTurnsEdit fte = new FTurnsEdit(name, id);
+        fte.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnEditMouseClicked
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonEditar;
-    private javax.swing.JButton jButtonEliminar;
-    private javax.swing.JButton jButtonInserir;
-    private javax.swing.JButton jButtonListar;
+    private javax.swing.JButton btnEdit;
+    private javax.swing.JButton btnEliminate;
+    private javax.swing.JButton btnInsert;
+    private javax.swing.JButton btnList;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

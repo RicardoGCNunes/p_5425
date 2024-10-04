@@ -19,10 +19,19 @@ import javax.swing.JOptionPane;
  */
 public class FTurnsInsert extends javax.swing.JFrame {
 
+    private String name;
+    private String id;
+    
     /**
      * Creates new form FTurnsInsert
      */
     public FTurnsInsert() {
+        initComponents();
+    }
+    
+    public FTurnsInsert(String name, String id) {
+        this.name = name;
+        this.id = id;
         initComponents();
     }
 
@@ -36,17 +45,17 @@ public class FTurnsInsert extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        labelDate = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButtonInserir = new javax.swing.JButton();
-        jButtonVoltar = new javax.swing.JButton();
-        jFTIsbn = new javax.swing.JTextField();
-        inputInitTime = new javax.swing.JTextField();
+        btnInsert = new javax.swing.JButton();
+        btnReturn = new javax.swing.JButton();
+        inputDate = new javax.swing.JTextField();
+        inputStartTime = new javax.swing.JTextField();
         inputEndTime = new javax.swing.JTextField();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        checkRepeat = new javax.swing.JCheckBox();
         weekDayInput = new javax.swing.JTextField();
-        labelWeek = new javax.swing.JLabel();
+        labelDay = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -55,8 +64,8 @@ public class FTurnsInsert extends javax.swing.JFrame {
         jLabel1.setText("Inserir Turnos");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, -1, -1));
 
-        jLabel2.setText("Data:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
+        labelDate.setText("Data:");
+        getContentPane().add(labelDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
 
         jLabel3.setText("Hora Inicio:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
@@ -64,55 +73,50 @@ public class FTurnsInsert extends javax.swing.JFrame {
         jLabel4.setText("Hora Fim:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
 
-        jButtonInserir.setText("Inserir");
-        jButtonInserir.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnInsert.setText("Inserir");
+        btnInsert.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonInserirMouseClicked(evt);
+                btnInsertMouseClicked(evt);
             }
         });
-        jButtonInserir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonInserirActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButtonInserir, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 360, -1, -1));
+        getContentPane().add(btnInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 360, -1, -1));
 
-        jButtonVoltar.setText("Voltar");
-        jButtonVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnReturn.setText("Voltar");
+        btnReturn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonVoltarMouseClicked(evt);
+                btnReturnMouseClicked(evt);
             }
         });
-        getContentPane().add(jButtonVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 360, -1, -1));
+        getContentPane().add(btnReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 360, -1, -1));
 
-        jFTIsbn.setToolTipText("");
-        getContentPane().add(jFTIsbn, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 270, -1));
-        getContentPane().add(inputInitTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 270, -1));
+        inputDate.setToolTipText("");
+        getContentPane().add(inputDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 270, -1));
+        getContentPane().add(inputStartTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 270, -1));
         getContentPane().add(inputEndTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 270, -1));
 
-        jCheckBox1.setText("Turno Repetido");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+        checkRepeat.setText("Turno Repetido");
+        checkRepeat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                checkRepeatMouseClicked(evt);
             }
         });
-        getContentPane().add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, -1, -1));
+        getContentPane().add(checkRepeat, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, -1, -1));
 
         weekDayInput.setToolTipText("");
         weekDayInput.setEnabled(false);
         getContentPane().add(weekDayInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 270, 70, -1));
 
-        labelWeek.setText("Dia da semana:");
-        labelWeek.setEnabled(false);
-        getContentPane().add(labelWeek, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, -1, -1));
+        labelDay.setText("Dia da semana:");
+        labelDay.setEnabled(false);
+        getContentPane().add(labelDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonInserirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonInserirMouseClicked
+    private void btnInsertMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsertMouseClicked
         // TODO add your handling code here:
-        String isbn = jFTIsbn.getText();
-        String titulo = inputInitTime.getText();
+        String isbn = inputDate.getText();
+        String titulo = inputStartTime.getText();
         String autor = inputEndTime.getText();
 
         // TODO add function
@@ -161,25 +165,34 @@ public class FTurnsInsert extends javax.swing.JFrame {
             }
 
         }
-        jFTIsbn.setText("");
-        inputInitTime.setText("");
+        inputDate.setText("");
+        inputStartTime.setText("");
         inputEndTime.setText("");
-    }//GEN-LAST:event_jButtonInserirMouseClicked
+    }//GEN-LAST:event_btnInsertMouseClicked
 
-    private void jButtonInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInserirActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonInserirActionPerformed
-
-    private void jButtonVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonVoltarMouseClicked
-        // TODO add your handling code here:
+    private void btnReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReturnMouseClicked
         FTurnsInit fpr = new FTurnsInit();
         fpr.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButtonVoltarMouseClicked
+    }//GEN-LAST:event_btnReturnMouseClicked
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    private void checkRepeatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkRepeatMouseClicked
+        if (checkRepeat.isSelected()) {
+            labelDay.setEnabled(true);
+            weekDayInput.setEnabled(true);
+            labelDate.setEnabled(false);
+            inputDate.setEnabled(false);
+            inputDate.setText("");
+        }
+        else {
+            labelDay.setEnabled(false);
+            weekDayInput.setEnabled(false);
+            weekDayInput.setText("");
+            labelDate.setEnabled(true);
+            inputDate.setEnabled(true);
+        }
+        
+    }//GEN-LAST:event_checkRepeatMouseClicked
 
     private boolean checkEmptyFields(ArrayList<String> fields) {
         for (String textField : fields) {
@@ -224,17 +237,17 @@ public class FTurnsInsert extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnInsert;
+    private javax.swing.JButton btnReturn;
+    private javax.swing.JCheckBox checkRepeat;
+    private javax.swing.JTextField inputDate;
     private javax.swing.JTextField inputEndTime;
-    private javax.swing.JTextField inputInitTime;
-    private javax.swing.JButton jButtonInserir;
-    private javax.swing.JButton jButtonVoltar;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JTextField jFTIsbn;
+    private javax.swing.JTextField inputStartTime;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel labelWeek;
+    private javax.swing.JLabel labelDate;
+    private javax.swing.JLabel labelDay;
     private javax.swing.JTextField weekDayInput;
     // End of variables declaration//GEN-END:variables
 }

@@ -10,6 +10,9 @@ package holidayform;
  */
 public class FHolidayEliminate extends javax.swing.JFrame {
 
+    private String name;
+    private String id;
+    
     /**
      * Creates new form FHolidayEliminate
      */
@@ -17,6 +20,12 @@ public class FHolidayEliminate extends javax.swing.JFrame {
         initComponents();
     }
 
+    public FHolidayEliminate(String name, String id) {
+        this.name = name;
+        this.id = id;
+        initComponents();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,21 +35,42 @@ public class FHolidayEliminate extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel1 = new javax.swing.JLabel();
+        btnEliminate = new javax.swing.JButton();
+        btnReturn = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        listBoxHolidays = new javax.swing.JComboBox<>();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel1.setText("Eliminar Férias");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, -1));
+
+        btnEliminate.setText("Eliminar");
+        getContentPane().add(btnEliminate, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
+
+        btnReturn.setText("Voltar");
+        btnReturn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnReturnMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, -1, -1));
+
+        jLabel2.setText("Férias:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, -1));
+        getContentPane().add(listBoxHolidays, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 190, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReturnMouseClicked
+        FHolidayInit fhi = new FHolidayInit();
+        fhi.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnReturnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -78,5 +108,10 @@ public class FHolidayEliminate extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEliminate;
+    private javax.swing.JButton btnReturn;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JComboBox<String> listBoxHolidays;
     // End of variables declaration//GEN-END:variables
 }
