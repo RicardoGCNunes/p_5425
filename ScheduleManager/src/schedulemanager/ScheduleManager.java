@@ -4,6 +4,9 @@
  */
 package schedulemanager;
 
+import employeeform.FEmpInit;
+import turnsform.FTurnsInit;
+
 /**
  *
  * @author ART
@@ -14,7 +17,10 @@ public class ScheduleManager {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        FEmpInit fei = new FEmpInit();
+        fei.setVisible(true);
+        //FTurnsInit fti = new FTurnsInit("Ricardo Nunes", "1234");
+        //fti.setVisible(true);
     }
     
 }
