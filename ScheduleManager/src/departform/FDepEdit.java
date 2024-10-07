@@ -4,16 +4,27 @@
  */
 package departform;
 
+import bdconnect.DataBaseConnect;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ART
  */
 public class FDepEdit extends javax.swing.JFrame {
 
+    private DataBaseConnect connector;
+    private int id;
+    private String name;
+    
     /**
      * Creates new form FDepEdit
      */
     public FDepEdit() {
+        connector = new DataBaseConnect();
+        id = 0;
+        name = "";
         initComponents();
     }
 
@@ -26,21 +37,110 @@ public class FDepEdit extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        inputName = new javax.swing.JTextField();
+        btnInsert = new javax.swing.JButton();
+        btnReturn = new javax.swing.JButton();
+        listBoxDep = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel1.setText("Editar Departamento");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
+
+        jLabel2.setText("Departamento:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, -1, -1));
+        getContentPane().add(inputName, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 210, -1));
+
+        btnInsert.setText("Editar");
+        btnInsert.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnInsertMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, -1, -1));
+
+        btnReturn.setText("Voltar");
+        btnReturn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnReturnMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, -1, -1));
+
+        listBoxDep.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                listBoxDepItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(listBoxDep, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 120, 210, -1));
+
+        jLabel3.setText("Nome:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReturnMouseClicked
+        FDepInit fdi = new FDepInit();
+        fdi.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnReturnMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        String query = "SELECT * FROM departamento";
+        ArrayList<ArrayList<String>> result = connector.list(query);
+        
+        for (ArrayList<String> row : result) {
+            this.listBoxDep.addItem(row.get(1));
+        }
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btnInsertMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsertMouseClicked
+        String name = this.inputName.getText();
+        
+        if (name.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O campo nome tem de ser preenchido!");
+            return;
+        }
+        
+        String query = "UPDATE departamento SET "+
+                    "nome = ?"+
+                    "WHERE id = " + this.id;
+        int rowsAffected = connector.edit(query, new ArrayList<String>(){{
+            add(name);
+        }});
+        
+        if (rowsAffected <= 0) {
+            JOptionPane.showMessageDialog(null, "Nenhum registo modificado.");
+            return;
+        }
+        JOptionPane.showMessageDialog(null, "Registo editado com sucesso!");
+        
+        inputName.setText("");
+    }//GEN-LAST:event_btnInsertMouseClicked
+
+    private void listBoxDepItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_listBoxDepItemStateChanged
+        if (this.listBoxDep.getSelectedItem() == null) return;
+        if (this.listBoxDep.getSelectedItem().toString().compareTo(this.name) == 0) return;
+        
+        this.name = listBoxDep.getSelectedItem().toString();
+        String query = "SELECT * FROM departamento "+
+                    "WHERE nome = '" + this.name + "'";
+        ArrayList<ArrayList<String>> table = connector.list(query);
+        
+        this.id = Integer.valueOf(table.get(0).get(0));
+        this.inputName.setText(table.get(0).get(1));
+    }//GEN-LAST:event_listBoxDepItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -78,5 +178,12 @@ public class FDepEdit extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnInsert;
+    private javax.swing.JButton btnReturn;
+    private javax.swing.JTextField inputName;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JComboBox<String> listBoxDep;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,16 +4,27 @@
  */
 package employeeform;
 
+import bdconnect.DataBaseConnect;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ART
  */
 public class FEmpInsert extends javax.swing.JFrame {
 
+    private DataBaseConnect connector;
+    private String depName;
+    private int depId;
+    
     /**
      * Creates new form FEmpInsert
      */
     public FEmpInsert() {
+        connector = new DataBaseConnect();
+        depName = "";
+        depId = -1;
         initComponents();
     }
 
@@ -40,8 +51,15 @@ public class FEmpInsert extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         listBoxDepart = new javax.swing.JComboBox<>();
         checkBoxAdmin = new javax.swing.JCheckBox();
+        inputCode = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
@@ -49,19 +67,24 @@ public class FEmpInsert extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
 
         jLabel2.setText("Nome:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, -1));
 
         jLabel3.setText("Email:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, -1, -1));
 
         jLabel4.setText("Telemóvel:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, -1, -1));
 
         jLabel5.setText("Data de Início");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, -1, -1));
 
         btnInsert.setText("Inserir");
-        getContentPane().add(btnInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 440, -1, -1));
+        btnInsert.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnInsertMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 510, -1, -1));
 
         btnReturn.setText("Voltar");
         btnReturn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -69,20 +92,32 @@ public class FEmpInsert extends javax.swing.JFrame {
                 btnReturnMouseClicked(evt);
             }
         });
-        getContentPane().add(btnReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 440, -1, -1));
+        getContentPane().add(btnReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 510, -1, -1));
 
         inputName.setToolTipText("");
-        getContentPane().add(inputName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 270, -1));
-        getContentPane().add(inputEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 270, -1));
-        getContentPane().add(inputTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 270, -1));
-        getContentPane().add(inputStartDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, 270, -1));
+        getContentPane().add(inputName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 270, -1));
+        getContentPane().add(inputEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 270, -1));
+        getContentPane().add(inputTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 270, -1));
+        getContentPane().add(inputStartDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, 270, -1));
 
         jLabel8.setText("Departamento:");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+
+        listBoxDepart.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                listBoxDepartItemStateChanged(evt);
+            }
+        });
         getContentPane().add(listBoxDepart, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 270, -1));
 
         checkBoxAdmin.setText("Administrador");
-        getContentPane().add(checkBoxAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, -1, -1));
+        getContentPane().add(checkBoxAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, -1, -1));
+
+        inputCode.setToolTipText("");
+        getContentPane().add(inputCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 270, -1));
+
+        jLabel6.setText("Código:");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -92,6 +127,77 @@ public class FEmpInsert extends javax.swing.JFrame {
         fei.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnReturnMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        String query = "SELECT * FROM departamento";
+        ArrayList<ArrayList<String>> result = connector.list(query);
+        
+        this.listBoxDepart.addItem("");
+        for (ArrayList<String> row : result) {
+            this.listBoxDepart.addItem(row.get(1));
+        }
+        
+        this.depName = result.get(0).get(0);
+        this.depId = Integer.valueOf(result.get(0).get(0));
+    }//GEN-LAST:event_formWindowOpened
+
+    private void listBoxDepartItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_listBoxDepartItemStateChanged
+        if (this.listBoxDepart.getSelectedItem().toString().compareTo("") == 0){
+            this.depId = -1;
+            return;
+        }
+        if (this.listBoxDepart.getSelectedItem().toString().compareTo(this.depName) == 0) return;
+        
+        this.depName = listBoxDepart.getSelectedItem().toString();
+        String query = "SELECT * FROM departamento "+
+                    "WHERE nome = '" + this.depName + "'";
+        
+        ArrayList<ArrayList<String>> table = connector.list(query);
+        
+        this.depId = Integer.valueOf(table.get(0).get(0));
+    }//GEN-LAST:event_listBoxDepartItemStateChanged
+
+    private void btnInsertMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsertMouseClicked
+        if(this.depId == -1) {
+            JOptionPane.showMessageDialog(null, "Todos os campos têm de ser preenchidos!");
+            return;
+        }
+        
+        String code = inputCode.getText();
+        String name = inputName.getText();
+        String email = inputEmail.getText();
+        String tele = inputTel.getText();
+        String startDate = inputStartDate.getText();
+        String admin = checkBoxAdmin.isSelected() ? "1" : "0";
+        String depId = Integer.toString(this.depId);
+        
+        ArrayList<String> inputs = new ArrayList(){{
+            add(code);
+            add(name);
+            add(email);
+            add(tele);
+            add(startDate);
+            add(admin);
+            add(depId);
+        }};
+        
+        for(String elem : inputs) {
+            if(elem.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Todos os campos têm de ser preenchidos!");
+                return;
+            }
+        }
+        
+        String sql = "INSERT INTO funcionario(cod_func, name, email, n_tel, data_inicio, admin, id_depart)" +
+                       "VALUES(?, ?, ?, ?, ?, ?, ?)";
+        int rowsAffected = connector.insert(sql, inputs);
+        
+        if (rowsAffected <= 0) {
+            JOptionPane.showMessageDialog(null, "Falha ao inserir o registo.");
+            return;
+        }
+        JOptionPane.showMessageDialog(null, "Registo inserido com sucesso!");
+    }//GEN-LAST:event_btnInsertMouseClicked
 
     /**
      * @param args the command line arguments
@@ -132,17 +238,17 @@ public class FEmpInsert extends javax.swing.JFrame {
     private javax.swing.JButton btnInsert;
     private javax.swing.JButton btnReturn;
     private javax.swing.JCheckBox checkBoxAdmin;
+    private javax.swing.JTextField inputCode;
     private javax.swing.JTextField inputEmail;
     private javax.swing.JTextField inputName;
     private javax.swing.JTextField inputStartDate;
     private javax.swing.JTextField inputTel;
-    private javax.swing.JButton jButtonInserir;
-    private javax.swing.JButton jButtonInserir1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JComboBox<String> listBoxDepart;
     // End of variables declaration//GEN-END:variables

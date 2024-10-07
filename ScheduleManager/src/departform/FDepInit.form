@@ -27,53 +27,53 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="btnList">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Listar Funcion&#xe1;rio"/>
+        <Property name="text" type="java.lang.String" value="Listar Departamento"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnListMouseClicked"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="60" y="220" width="140" height="-1"/>
+          <AbsoluteConstraints x="60" y="220" width="180" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="btnEdit">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Editar Funcion&#xe1;rio"/>
+        <Property name="text" type="java.lang.String" value="Editar Departamento"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnEditMouseClicked"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="60" y="180" width="140" height="-1"/>
+          <AbsoluteConstraints x="60" y="180" width="180" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="btnEliminate">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Eliminar Funcion&#xe1;rio"/>
+        <Property name="text" type="java.lang.String" value="Eliminar Departamento"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnEliminateMouseClicked"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="60" y="140" width="140" height="-1"/>
+          <AbsoluteConstraints x="60" y="140" width="180" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="btnInsert">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Inserir Funcion&#xe1;rio"/>
+        <Property name="text" type="java.lang.String" value="Inserir Departamento"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnInsertMouseClicked"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="60" y="100" width="140" height="-1"/>
+          <AbsoluteConstraints x="60" y="100" width="180" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

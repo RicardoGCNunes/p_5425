@@ -35,37 +35,37 @@ public class FDepInit extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnList.setText("Listar Funcionário");
+        btnList.setText("Listar Departamento");
         btnList.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnListMouseClicked(evt);
             }
         });
-        getContentPane().add(btnList, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 140, -1));
+        getContentPane().add(btnList, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 180, -1));
 
-        btnEdit.setText("Editar Funcionário");
+        btnEdit.setText("Editar Departamento");
         btnEdit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnEditMouseClicked(evt);
             }
         });
-        getContentPane().add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 140, -1));
+        getContentPane().add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 180, -1));
 
-        btnEliminate.setText("Eliminar Funcionário");
+        btnEliminate.setText("Eliminar Departamento");
         btnEliminate.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnEliminateMouseClicked(evt);
             }
         });
-        getContentPane().add(btnEliminate, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 140, -1));
+        getContentPane().add(btnEliminate, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 180, -1));
 
-        btnInsert.setText("Inserir Funcionário");
+        btnInsert.setText("Inserir Departamento");
         btnInsert.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnInsertMouseClicked(evt);
             }
         });
-        getContentPane().add(btnInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 140, -1));
+        getContentPane().add(btnInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 180, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setText("Gestão dos Departamentos");

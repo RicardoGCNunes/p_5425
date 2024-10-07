@@ -4,16 +4,23 @@
  */
 package departform;
 
+import bdconnect.DataBaseConnect;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ART
  */
 public class FDepEliminate extends javax.swing.JFrame {
 
+    private DataBaseConnect connector;
+    
     /**
      * Creates new form FDepEliminate
      */
     public FDepEliminate() {
+        this.connector = new DataBaseConnect();
         initComponents();
     }
 
@@ -26,21 +33,77 @@ public class FDepEliminate extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel1 = new javax.swing.JLabel();
+        btnEliminate = new javax.swing.JButton();
+        btnReturn = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        listBoxDep = new javax.swing.JComboBox<>();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel1.setText("Eliminar Departamento");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+
+        btnEliminate.setText("Eliminar");
+        btnEliminate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminateMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnEliminate, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, -1, -1));
+
+        btnReturn.setText("Voltar");
+        btnReturn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnReturnMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, -1, -1));
+
+        jLabel2.setText("Departamento:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, -1));
+        getContentPane().add(listBoxDep, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 190, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReturnMouseClicked
+        FDepInit fdi = new FDepInit();
+        fdi.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnReturnMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        String query = "SELECT * FROM departamento";
+        ArrayList<ArrayList<String>> result = connector.list(query);
+        
+        for (ArrayList<String> row : result) {
+            this.listBoxDep.addItem(row.get(1));
+        }
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btnEliminateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminateMouseClicked
+        String name = listBoxDep.getSelectedItem().toString();
+        
+        String query = "DELETE FROM departamento " +
+                    "WHERE nome = '" + name + "'";
+        int rowsAffected = connector.delete(query);
+        if (rowsAffected <= 0) {
+            JOptionPane.showMessageDialog(null, "Falha ao eliminar o registo.");
+            return;
+        }
+        JOptionPane.showMessageDialog(null, "Registo eliminado com sucesso!");
+        FDepInit fdi = new FDepInit();
+        fdi.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnEliminateMouseClicked
 
     /**
      * @param args the command line arguments
@@ -78,5 +141,10 @@ public class FDepEliminate extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEliminate;
+    private javax.swing.JButton btnReturn;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JComboBox<String> listBoxDep;
     // End of variables declaration//GEN-END:variables
 }

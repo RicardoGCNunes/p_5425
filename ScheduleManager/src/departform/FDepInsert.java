@@ -4,16 +4,23 @@
  */
 package departform;
 
+import bdconnect.DataBaseConnect;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ART
  */
 public class FDepInsert extends javax.swing.JFrame {
-
+    
+    private DataBaseConnect connector;
+    
     /**
      * Creates new form FDepInsert
      */
     public FDepInsert() {
+        this.connector = new DataBaseConnect();
         initComponents();
     }
 
@@ -26,21 +33,69 @@ public class FDepInsert extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel1 = new javax.swing.JLabel();
+        btnInsert = new javax.swing.JButton();
+        btnReturn = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        inputName = new javax.swing.JTextField();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel1.setText("Inserir Departamento");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
+
+        btnInsert.setText("Inserir");
+        btnInsert.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnInsertMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, -1, -1));
+
+        btnReturn.setText("Voltar");
+        btnReturn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnReturnMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, -1, -1));
+
+        jLabel2.setText("Nome:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, -1, -1));
+        getContentPane().add(inputName, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 250, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReturnMouseClicked
+        FDepInit fdi = new FDepInit();
+        fdi.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnReturnMouseClicked
+
+    private void btnInsertMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsertMouseClicked
+        String name = inputName.getText();
+        
+        if (name.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O campo nome tem de ser preenchido!");
+            return;
+        }
+        String sql = "INSERT INTO departamento(nome)" +
+                       "VALUES(?)";
+        int rowsAffected = connector.insert(sql, new ArrayList(){{
+            add(name);
+        }});
+        
+        if (rowsAffected <= 0) {
+            JOptionPane.showMessageDialog(null, "Falha ao inserir o registo.");
+            return;
+        }
+        JOptionPane.showMessageDialog(null, "Registo inserido com sucesso!");
+        
+        inputName.setText("");
+    }//GEN-LAST:event_btnInsertMouseClicked
 
     /**
      * @param args the command line arguments
@@ -78,5 +133,10 @@ public class FDepInsert extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnInsert;
+    private javax.swing.JButton btnReturn;
+    private javax.swing.JTextField inputName;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
