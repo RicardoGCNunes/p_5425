@@ -26,21 +26,77 @@ public class FDepInit extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        btnList = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
+        btnEliminate = new javax.swing.JButton();
+        btnInsert = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnList.setText("Listar Funcionário");
+        btnList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnListMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnList, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 140, -1));
+
+        btnEdit.setText("Editar Funcionário");
+        btnEdit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEditMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 140, -1));
+
+        btnEliminate.setText("Eliminar Funcionário");
+        btnEliminate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminateMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnEliminate, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 140, -1));
+
+        btnInsert.setText("Inserir Funcionário");
+        btnInsert.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnInsertMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 140, -1));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel1.setText("Gestão dos Departamentos");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnListMouseClicked
+        FDepList fdl = new FDepList();
+        fdl.setVisible (true);
+        this.dispose();
+    }//GEN-LAST:event_btnListMouseClicked
+
+    private void btnEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditMouseClicked
+        FDepEdit fde = new FDepEdit();
+        fde.setVisible (true);
+        this.dispose();
+    }//GEN-LAST:event_btnEditMouseClicked
+
+    private void btnEliminateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminateMouseClicked
+        FDepEliminate fde = new FDepEliminate();
+        fde.setVisible (true);
+        this.dispose();
+    }//GEN-LAST:event_btnEliminateMouseClicked
+
+    private void btnInsertMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsertMouseClicked
+        FDepInsert fdi = new FDepInsert();
+        fdi.setVisible (true);
+        this.dispose();
+    }//GEN-LAST:event_btnInsertMouseClicked
 
     /**
      * @param args the command line arguments
@@ -78,5 +134,10 @@ public class FDepInit extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEdit;
+    private javax.swing.JButton btnEliminate;
+    private javax.swing.JButton btnInsert;
+    private javax.swing.JButton btnList;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
